@@ -23,11 +23,11 @@
 package org.jmrtd.test;
 
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.security.spec.ECPoint;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -63,9 +63,9 @@ public class UtilTest extends TestCase {
 
   public void testPadding(int arraySize, int blockSize) {
     try {
-      Random random = new Random();
+      SecureRandom SecureRandom = new SecureRandom();
       byte[] bytes = new byte[arraySize];
-      random.nextBytes(bytes);
+      SecureRandom.nextBytes(bytes);
 
       byte[] paddedBytes = Util.pad(bytes, blockSize);
       assertNotNull(paddedBytes);
@@ -89,9 +89,9 @@ public class UtilTest extends TestCase {
   }
 
   public void testPartition(int dataSize, int segmentSize) {
-    Random random = new Random();
+    SecureRandom SecureRandom = new SecureRandom();
     byte[] data = new byte[dataSize];
-    random.nextBytes(data);
+    SecureRandom.nextBytes(data);
     List<byte[]> segments = Util.partition(segmentSize, data);
 
     /* This should be approximately true. */

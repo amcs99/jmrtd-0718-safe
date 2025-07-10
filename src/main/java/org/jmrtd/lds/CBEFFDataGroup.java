@@ -25,9 +25,9 @@ package org.jmrtd.lds;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,7 +54,7 @@ public abstract class CBEFFDataGroup<R extends BiometricDataBlock> extends DataG
   protected static final Logger LOGGER = Logger.getLogger("org.jmrtd");
 
   /** For writing the optional random data block. */
-  private Random random;
+  private SecureRandom random;
 
   /** Records in the BIT group. Each record represents a single BIT. */
   private List<R> subRecords;
@@ -68,7 +68,7 @@ public abstract class CBEFFDataGroup<R extends BiometricDataBlock> extends DataG
   protected CBEFFDataGroup(int dataGroupTag, List<R> subRecords) {
     super(dataGroupTag);
     addAll(subRecords);
-    this.random = new Random();
+    this.random = new SecureRandom();
   }
 
   /**
@@ -81,7 +81,7 @@ public abstract class CBEFFDataGroup<R extends BiometricDataBlock> extends DataG
    */
   protected CBEFFDataGroup(int dataGroupTag, InputStream inputStream) throws IOException {
     super(dataGroupTag, inputStream);
-    this.random = new Random();
+    this.random = new SecureRandom();
   }
 
   /**

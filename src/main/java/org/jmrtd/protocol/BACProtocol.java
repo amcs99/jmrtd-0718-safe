@@ -24,7 +24,6 @@ package org.jmrtd.protocol;
 
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
-import java.util.Random;
 
 import javax.crypto.SecretKey;
 
@@ -48,7 +47,7 @@ public class BACProtocol {
 
   private APDULevelBACCapable service;
 
-  private Random random;
+  private SecureRandom random;
 
   private int maxTranceiveLength;
 
